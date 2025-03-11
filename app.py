@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from graficos import grafico_hist
+from graficos import grafico_hist, grafico_proporcao_diabeticos_por_idade
 
 # Carregar o modelo e o scaler
 modelo = joblib.load("./modelo/modelo_diabetes.pkl")
@@ -28,6 +28,8 @@ if pagina == "📊 Dashboard":
     st.subheader("Distribuição do IMC")
     grafico_hist(df, "BMI", "Outcome")
 
+    st.subheader("Proporção de Diabéticos por Faixa Etária")
+    grafico_proporcao_diabeticos_por_idade(df)
 
 # --------------------- Página 2: Fazer Previsão ---------------------
 elif pagina == "🔍 Fazer Previsão":
