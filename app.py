@@ -14,6 +14,19 @@ path = "diabetes.csv"
 columns = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI", "DiabetesPedigree", "Age", "Outcome"]
 df = pd.read_csv(path, names=columns)
 
+# Tratar valores inconsistentes
+def tratar_valores_inconsistentes(df):
+    
+    df["Glucose"] = df["Glucose"].replace(0, np.nan)
+    df["BloodPressure"] = df["BloodPressure"].replace(0, np.nan)
+    df["SkinThickness"] = df["SkinThickness"].replace(0, np.nan)
+    df["Insulin"] = df["Insulin"].replace(0, np.nan)
+    df["BMI"] = df["BMI"].replace(0, np.nan)
+    
+    return df
+
+df = tratar_valores_inconsistentes(df)
+
 # Criar menu lateral
 st.sidebar.title("Menu de Navegação")
 pagina = st.sidebar.radio("Escolha uma página:", ["📊 Dashboard", "🔍 Fazer Previsão"])
